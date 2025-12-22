@@ -730,15 +730,15 @@ export default function Home() {
 
           <div className="relative">
             {/* CSI SIESGST presents */}
-            <div className="mb-6 fade-in-up" style={{ animationDelay: '0.1s' }}>
+            <div className="mb-6 fade-in-up flex flex-col items-center" style={{ animationDelay: '0.1s' }}>
+              <img
+                src="/csi-logo.png"
+                alt="CSI SIESGST"
+                className="h-20 md:h-28 lg:h-32 w-auto mb-2"
+                style={{ filter: 'drop-shadow(0 2px 10px rgba(0, 0, 0, 0.8))' }}
+              />
               <p
-                className="text-lg md:text-xl text-white tracking-[0.35em] mb-1 font-semibold"
-                style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)' }}
-              >
-                CSI SIESGST
-              </p>
-              <p
-                className="text-sm text-gray-300 italic font-light"
+                className="text-base md:text-lg text-gray-300 italic font-light"
                 style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.8)' }}
               >
                 presents

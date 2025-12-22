@@ -28,6 +28,10 @@ export const metadata: Metadata = {
   description: "Synapse - A high-engagement, case-driven competition where teams become AI Ethics & Product Investigators. Rescue a failed AI system while exploring product thinking, UX, AI, and ethics.",
   keywords: ["synapse", "AI ethics", "product thinking", "UX", "competition", "CSI SIESGST", "hackathon"],
   authors: [{ name: "CSI SIESGST" }],
+  icons: {
+    icon: "/csi-logo.png",
+    apple: "/csi-logo.png",
+  },
   openGraph: {
     title: "Synapse 2026 | Where Logic is Challenged",
     description: "Become an AI Ethics & Product Investigator. Rescue a failed AI system.",
