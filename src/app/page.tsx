@@ -479,6 +479,7 @@ function TimelineItem({
   title,
   description,
   location,
+  note,
   isLast,
   index
 }: {
@@ -486,6 +487,7 @@ function TimelineItem({
   title: string;
   description: string;
   location: string;
+  note?: string;
   isLast?: boolean;
   index: number;
 }) {
@@ -512,6 +514,11 @@ function TimelineItem({
         </div>
         <h3 className="text-xl font-bold mb-3 text-white">{title}</h3>
         <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+        {note && (
+          <div className="mt-4 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+            <p className="text-yellow-400 text-xs font-medium">{note}</p>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -527,27 +534,6 @@ function SectionHeader({ title, highlight, subtitle }: { title: string; highligh
         {title} <span className="text-red-400 glow-text">{highlight}</span>
       </h2>
       {subtitle && <p className="text-gray-400 text-lg">{subtitle}</p>}
-    </div>
-  );
-}
-
-// Experience Card Component
-function ExperienceCard({ icon, title, description, delay }: { icon: React.ReactNode; title: string; description: string; delay: number }) {
-  const { ref, isVisible } = useScrollAnimation();
-
-  return (
-    <div
-      ref={ref}
-      className={`glass rounded-2xl p-8 text-center card-hover border border-red-500/20 hover:border-red-500/40 group ${isVisible ? 'scale-in' : 'opacity-0'}`}
-      style={{ animationDelay: `${delay}s` }}
-    >
-      <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shadow-xl shadow-red-500/30 group-hover:scale-110 group-hover:shadow-red-500/50 transition-all duration-300">
-        {icon}
-      </div>
-      <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-red-400 transition-colors duration-300">
-        {title}
-      </h3>
-      <p className="text-gray-400 leading-relaxed">{description}</p>
     </div>
   );
 }
@@ -602,15 +588,22 @@ export default function Home() {
 
   const timelineEvents = [
     {
-      date: "18th January 2026",
-      title: "Round 1: Online Qualifier",
-      description: "Case study analysis and preliminary solutions submitted on Unstop platform.",
-      location: "On Unstop"
+      date: "16th January 2026",
+      title: "Round 1: Screening Quiz",
+      description: "A short and simple online quiz with 20 multiple-choice questions. You do not need any AI, ML, or coding knowledge to attempt this round. If you understand how apps and systems work at a basic level, you're good to go. Think of this round as a friendly screening, not a difficult test.",
+      location: "Online",
+      note: "If not selected for Round 2, entry fee will be refunded (after deducting ₹50) within 20 days"
     },
     {
       date: "28th January 2026",
-      title: "Round 2: Grand Finale",
-      description: "Top teams compete offline at SIES GST. Present your solutions, face the jury, and rescue the AI!",
+      title: "Round 2: AI Failure Investigation",
+      description: "Top 25 teams shortlisted from Round 1 will move to the main offline event. Work on a real-world AI failure case, analyse what went wrong, redesign the system and user experience, and present your solution to the judges.",
+      location: "Offline at SIESGST"
+    },
+    {
+      date: "28th January 2026",
+      title: "Round 3: Final Presentation & Pitch",
+      description: "TOP 15 Teams present their solution in front of judges and industry experts. Evaluation based on innovation, problem solving, ethical understanding, and presentation. Duration: 5 mins per team (excluding Q&A).",
       location: "Offline at SIESGST"
     }
   ];
@@ -832,16 +825,50 @@ export default function Home() {
 
         <div className="max-w-6xl mx-auto">
           <SectionHeader
-            title="The"
-            highlight="Mission"
+            title="About"
+            highlight="SYNAPSE"
           />
 
-          <div className="text-center mb-20">
-            <p className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed fade-in-up">
-              A high-engagement, case-driven competition where teams become{" "}
-              <span className="text-red-400 font-semibold">AI Ethics & Product Investigators</span>{" "}
-              responsible for rescuing a failed AI system. It blends product thinking, UX, AI, and ethics into one tight, well-designed challenge.
+          <div className="text-center mb-12">
+            <p className="text-gray-300 max-w-4xl mx-auto text-lg leading-relaxed fade-in-up mb-6">
+              SYNAPSE is a <span className="text-red-400 font-semibold">job simulation</span> where you step into the role of an{" "}
+              <span className="text-red-400 font-semibold">AI System Investigator</span> and{" "}
+              <span className="text-red-400 font-semibold">Product Strategist</span> working on a live production issue.
             </p>
+            <div className="glass rounded-2xl p-8 max-w-3xl mx-auto border border-red-500/20 fade-in-up" style={{ animationDelay: '0.1s' }}>
+              <p className="text-xl text-white font-medium mb-4">A real-world AI system has failed.</p>
+              <p className="text-lg text-gray-300 mb-2">Users are affected. Trust is broken.</p>
+              <p className="text-red-400 font-semibold text-lg">Your task is to analyse the failure, identify the root cause, and redesign the system—just like teams do in real tech companies.</p>
+            </div>
+            <p className="text-gray-400 max-w-2xl mx-auto text-base mt-8 fade-in-up italic" style={{ animationDelay: '0.2s' }}>
+              This is not a coding contest. It is a thinking, analysis, and decision-making simulation.
+            </p>
+          </div>
+
+          {/* Your Role Section */}
+          <div className="mb-20">
+            <h3 className="text-2xl md:text-3xl font-bold text-center mb-10 text-white fade-in-up">
+              Your <span className="text-red-400 glow-text">Role</span>
+            </h3>
+            <p className="text-gray-300 text-center mb-8 fade-in-up">You are part of a task force brought in to:</p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              {[
+                { icon: "🔍", text: "Investigate system behaviour using logs and outputs" },
+                { icon: "🎯", text: "Perform Root Cause Analysis (technical + ethical)" },
+                { icon: "🔧", text: "Redesign the AI workflow to prevent future failures" },
+                { icon: "💬", text: "Improve how the system explains decisions to users" },
+                { icon: "🎤", text: "Defend your solution to an AI review board (judges)" },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="glass rounded-xl p-5 border border-red-500/20 hover:border-red-500/40 transition-all duration-300 fade-in-up flex items-center gap-4"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <span className="text-2xl">{item.icon}</span>
+                  <p className="text-gray-300 text-sm">{item.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Features Grid */}
@@ -852,7 +879,7 @@ export default function Home() {
           </div>
 
           {/* Investigation Terminal */}
-          <div className="glass rounded-2xl overflow-hidden max-w-3xl mx-auto border border-red-500/20 fade-in-up">
+          <div className="glass rounded-2xl overflow-hidden max-w-3xl mx-auto border border-red-500/20 fade-in-up mb-20">
             <div className="flex items-center gap-2 px-5 py-4 bg-gradient-to-r from-[#1a0808] to-[#150606] border-b border-red-500/20">
               <div className="w-3 h-3 rounded-full bg-red-500/80" />
               <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
@@ -870,6 +897,61 @@ export default function Home() {
               <p className="text-red-400 flex items-center">
                 {"> "}<span className="cursor-blink ml-1">_</span>
               </p>
+            </div>
+          </div>
+
+          {/* Guidelines Section */}
+          <div className="mb-0">
+            <h3 className="text-2xl md:text-3xl font-bold text-center mb-10 text-white fade-in-up">
+              Who Can <span className="text-red-400 glow-text">Participate?</span>
+            </h3>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {/* Eligibility */}
+              <div className="glass rounded-2xl p-8 border border-red-500/20 hover:border-red-500/40 transition-all duration-300 fade-in-up">
+                <h4 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                  <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500/30 to-red-700/20 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </span>
+                  Eligibility
+                </h4>
+                <ul className="space-y-3">
+                  {[
+                    "Open to all college students",
+                    "Inter-college team members allowed",
+                    "Inter-specialisation team members allowed",
+                    "Anyone interested in AI, product, design, or consulting",
+                    "Students who enjoy problem-solving and analysis"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 text-gray-300 text-sm">
+                      <span className="text-red-400 mt-0.5">•</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Team Size */}
+              <div className="glass rounded-2xl p-8 border border-red-500/20 hover:border-red-500/40 transition-all duration-300 fade-in-up" style={{ animationDelay: '0.1s' }}>
+                <h4 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                  <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500/30 to-red-700/20 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </span>
+                  Team Size
+                </h4>
+                <div className="text-center py-6">
+                  <div className="text-5xl font-bold text-red-400 glow-text mb-2">2-3</div>
+                  <p className="text-gray-300 text-lg">Members per team</p>
+                </div>
+                <div className="glass-red rounded-xl p-4 border border-red-500/30 mt-4">
+                  <p className="text-sm text-gray-300 text-center">
+                    Form a diverse team with complementary skills for the best results!
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -927,48 +1009,157 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What You'll Experience Section */}
+      {/* What You Gain Section */}
       <section className="py-28 px-4 relative z-10">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-28 bg-gradient-to-b from-red-500/60 to-transparent" />
 
         <div className="max-w-6xl mx-auto">
           <SectionHeader
-            title="What"
-            highlight="Awaits You"
-            subtitle="An immersive investigation experience"
+            title="What You"
+            highlight="Gain"
+            subtitle="Skills and experience that matter"
           />
 
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
-            <ExperienceCard
-              icon={
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            {[
+              {
+                icon: (
+                  <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                ),
+                title: "Real-World Experience",
+                description: "Experience a real-world AI decision-making workflow used in tech companies"
+              },
+              {
+                icon: (
+                  <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                  </svg>
+                ),
+                title: "System Thinking",
+                description: "Practice system-level thinking used in industry to solve complex problems"
+              },
+              {
+                icon: (
+                  <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                ),
+                title: "Portfolio Builder",
+                description: "Build a strong case study for interviews and enhance your resume"
+              },
+              {
+                icon: (
+                  <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                ),
+                title: "Responsible AI",
+                description: "Learn how responsible AI is designed, reviewed, and deployed ethically"
               }
-              title="Critical Thinking"
-              description="Analyze complex AI failure scenarios and develop logical solutions"
-              delay={0}
-            />
-            <ExperienceCard
-              icon={
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-                </svg>
+            ].map((item, index) => (
+              <FeatureCard key={index} icon={item.icon} title={item.title} description={item.description} delay={index * 0.1} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What Makes This Different Section */}
+      <section className="py-28 px-4 relative z-10">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-28 bg-gradient-to-b from-red-500/60 to-transparent" />
+
+        <div className="max-w-5xl mx-auto">
+          <SectionHeader
+            title="What Makes This"
+            highlight="Different"
+            subtitle="Not your typical hackathon"
+          />
+
+          <div className="grid md:grid-cols-2 gap-6 mt-12">
+            {[
+              { icon: "📁", text: "Case files based on real AI product failures" },
+              { icon: "🧠", text: "Focus on system logic, not algorithms" },
+              { icon: "🎨", text: "Product, UX, and ethics combined in one challenge" },
+              { icon: "💻", text: "No ML coding required" },
+              { icon: "📊", text: "Evaluated on clarity, reasoning, and feasibility" }
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="glass rounded-xl p-6 border border-red-500/20 hover:border-red-500/40 transition-all duration-300 fade-in-up flex items-center gap-5 group"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <span className="text-3xl group-hover:scale-110 transition-transform duration-300">{item.icon}</span>
+                <p className="text-gray-200 text-lg font-medium">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Important Dates Section */}
+      <section className="py-28 px-4 relative z-10">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-28 bg-gradient-to-b from-red-500/60 to-transparent" />
+
+        <div className="max-w-5xl mx-auto">
+          <SectionHeader
+            title="Important"
+            highlight="Dates"
+            subtitle="Mark your calendar"
+          />
+
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {[
+              {
+                date: "16 Jan 2026",
+                time: "12:00 AM IST",
+                label: "Quiz Attempting",
+                description: "Round 1 quiz goes live"
+              },
+              {
+                date: "18 Jan 2026",
+                time: "12:00 AM IST",
+                label: "Registration Deadline",
+                description: "Last date to register"
+              },
+              {
+                date: "28 Jan 2026",
+                time: "02:00 PM IST",
+                label: "Offline Simulation",
+                description: "Rounds 2 & 3 at SIESGST"
               }
-              title="Ethical Reasoning"
-              description="Navigate the moral complexities of AI systems and their impact"
-              delay={0.15}
-            />
-            <ExperienceCard
-              icon={
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              }
-              title="Innovation"
-              description="Propose creative solutions that balance technology and humanity"
-              delay={0.3}
-            />
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="glass rounded-2xl p-8 border border-red-500/20 hover:border-red-500/40 transition-all duration-300 text-center fade-in-up group"
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                <div className="w-16 h-16 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-red-500/30 to-red-700/20 flex items-center justify-center border border-red-500/30 group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div className="text-2xl font-bold text-white mb-1">{item.date}</div>
+                <div className="text-red-400 font-code text-sm mb-4">{item.time}</div>
+                <div className="px-4 py-2 bg-red-500/15 rounded-full inline-block mb-3">
+                  <span className="text-red-300 text-sm font-semibold">{item.label}</span>
+                </div>
+                <p className="text-gray-400 text-sm">{item.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA after dates */}
+          <div className="text-center mt-16 fade-in-up">
+            <p className="text-gray-300 text-lg mb-6">Don&apos;t miss out on this unique opportunity!</p>
+            <a
+              href="https://unstop.com/p/synapse-ai-case-simulation-challenge-sies-graduate-school-of-technology-navi-mumbai-maharashtra-1613771"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-10 py-4 bg-gradient-to-r from-red-600 to-red-500 rounded-full font-bold text-lg btn-primary hover:from-red-500 hover:to-red-400 shadow-lg shadow-red-900/30 glow-pulse-btn text-white"
+            >
+              Register Now on Unstop
+            </a>
           </div>
         </div>
       </section>
