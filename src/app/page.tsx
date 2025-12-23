@@ -916,7 +916,7 @@ export default function Home() {
 
             <div className="relative z-10">
               <div className="text-7xl mb-8 float">🏆</div>
-              <div className="text-5xl md:text-7xl font-bold text-red-400 mb-5 glow-text-intense">₹10,000</div>
+              <div className="text-5xl md:text-7xl font-bold text-red-400 mb-5 glow-text-intense">₹7,000</div>
               <p className="text-xl text-gray-300 font-medium">Total Prize Pool</p>
 
               <div className="mt-10 pt-8 border-t border-red-500/20">
