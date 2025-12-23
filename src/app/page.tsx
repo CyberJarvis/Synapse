@@ -398,7 +398,7 @@ function Navigation() {
             </a>
           ))}
           <a
-            href="https://unstop.com"
+            href="https://unstop.com/p/synapse-ai-case-simulation-challenge-sies-graduate-school-of-technology-navi-mumbai-maharashtra-1613771"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2.5 bg-gradient-to-r from-red-600 to-red-500 rounded-full font-semibold text-sm btn-primary hover:from-red-500 hover:to-red-400 shadow-md shadow-red-900/25 ml-2"
@@ -442,7 +442,7 @@ function Navigation() {
             </a>
           ))}
           <a
-            href="https://unstop.com"
+            href="https://unstop.com/p/synapse-ai-case-simulation-challenge-sies-graduate-school-of-technology-navi-mumbai-maharashtra-1613771"
             target="_blank"
             rel="noopener noreferrer"
             className="block mt-4 px-6 py-3 bg-gradient-to-r from-red-600 to-red-500 rounded-full font-semibold text-center hover:from-red-500 hover:to-red-400 transition-all"
@@ -795,7 +795,7 @@ export default function Home() {
               style={{ animationDelay: '0.6s' }}
             >
               <a
-                href="https://unstop.com"
+                href="https://unstop.com/p/synapse-ai-case-simulation-challenge-sies-graduate-school-of-technology-navi-mumbai-maharashtra-1613771"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-10 py-4 bg-gradient-to-r from-red-600 to-red-500 rounded-full font-bold text-lg btn-primary hover:from-red-500 hover:to-red-400 shadow-lg shadow-red-900/30 glow-pulse-btn text-white"
@@ -1037,7 +1037,7 @@ export default function Home() {
             </div>
 
             <a
-              href="https://unstop.com"
+              href="https://unstop.com/p/synapse-ai-case-simulation-challenge-sies-graduate-school-of-technology-navi-mumbai-maharashtra-1613771"
               target="_blank"
               rel="noopener noreferrer"
               className="px-7 py-2.5 bg-gradient-to-r from-red-600 to-red-500 rounded-full font-semibold text-sm btn-primary hover:from-red-500 hover:to-red-400 shadow-lg shadow-red-500/30"
