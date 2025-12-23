@@ -608,7 +608,7 @@ export default function Home() {
       location: "On Unstop"
     },
     {
-      date: "29th January 2026",
+      date: "28th January 2026",
       title: "Round 2: Grand Finale",
       description: "Top teams compete offline at SIES GST. Present your solutions, face the jury, and rescue the AI!",
       location: "Offline at SIESGST"
