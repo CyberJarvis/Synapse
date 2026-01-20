@@ -540,7 +540,7 @@ function SectionHeader({ title, highlight, subtitle }: { title: string; highligh
 
 // Main Page Component
 export default function Home() {
-  const eventDate = new Date("2026-01-18T09:00:00");
+  const eventDate = new Date("2026-01-23T09:00:00");
   const [heroMounted, setHeroMounted] = useState(false);
 
   useEffect(() => {
@@ -588,7 +588,7 @@ export default function Home() {
 
   const timelineEvents = [
     {
-      date: "16th January 2026",
+      date: "23rd January 2026",
       title: "Round 1: Screening Quiz",
       description: "A short and simple online quiz with 20 multiple-choice questions. You do not need any AI, ML, or coding knowledge to attempt this round. If you understand how apps and systems work at a basic level, you're good to go. Think of this round as a friendly screening, not a difficult test.",
       location: "Online",
@@ -1111,13 +1111,13 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6 mt-12">
             {[
               {
-                date: "16 Jan 2026",
+                date: "23 Jan 2026",
                 time: "12:00 AM IST",
                 label: "Quiz Attempting",
                 description: "Round 1 quiz goes live"
               },
               {
-                date: "18 Jan 2026",
+                date: "23 Jan 2026",
                 time: "12:00 AM IST",
                 label: "Registration Deadline",
                 description: "Last date to register"
